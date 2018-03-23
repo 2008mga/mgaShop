@@ -8,7 +8,7 @@ RUN apt-get install -y zip unzip && \
 
 RUN apt-get install -y libmagickwand-dev --no-install-recommends && rm -rf /var/lib/apt/lists/*  && \
     curl -L https://pecl.php.net/get/imagick-3.4.3.tgz >> /usr/src/php/ext/imagick.tgz && \
-    tar -xf /usr/src/php/ext/imagick.tgz -C /usr/src/php/ext/ && \
+    tar -xf /usr/src/php/ext/imagick.tgz -C /usr/src/php7/ext/ && \
     rm /usr/src/php/ext/imagick.tgz
 
 RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client imagemagick libmagickwand-dev --no-install-recommends && \
