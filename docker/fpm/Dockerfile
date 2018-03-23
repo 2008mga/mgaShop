@@ -2,11 +2,13 @@ FROM php:7-fpm
 
 RUN apt-get update && \
     apt-get install -y wget apt-transport-https lsb-release ca-certificates && \
-    wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
-    echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list && \
-    apt-get update
 
-RUN apt-get install -y php7-mysql php7-mbstring php7-xml php7-gd zip unzip
+RUN docker-php-ext-install mysqli && \
+    docker-php-ext-install mbstring && \
+    docker-php-ext-install xml && \
+    docker-php-ext-install gd
+
+RUN apt-get install -y zip unzip
 
 RUN apt-get update && apt-get install -y libmcrypt-dev \
     mysql-client libmagickwand-dev --no-install-recommends \
