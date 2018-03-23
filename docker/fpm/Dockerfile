@@ -6,9 +6,9 @@ RUN apt-get update && \
     echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
 RUN apt-get install -y zip unzip
 
-RUN apt-get install -y autoconf libmcrypt-dev mysql-client libmagickwand-dev --no-install-recommends && \
-    pecl install imagick
-RUN docker-php-ext-install mysqli xml gd mcrypt pdo_mysql
+RUN apt-get install -y mysql-client --no-install-recommends && \
+    pecl install mcrypt-1.0.1
+RUN docker-php-ext-install mysqli mbstring xml gd mcrypt pdo_mysql
 
 # install npm
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash && \
