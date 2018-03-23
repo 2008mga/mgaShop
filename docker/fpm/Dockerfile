@@ -1,7 +1,9 @@
 FROM bitnami/php-fpm:latest
 
 RUN apt-get update && \
-    apt-get install -y wget apt-transport-https lsb-release ca-certificates libpng-dev libxml2-dev
+    apt-get install -y wget apt-transport-https lsb-release ca-certificates libpng-dev libxml2-dev && \
+    wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
+    echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
 RUN apt-get install -y zip unzip
 
 RUN apt-get install -y libmcrypt-dev mysql-client libmagickwand-dev php7.2-devel --no-install-recommends && \
