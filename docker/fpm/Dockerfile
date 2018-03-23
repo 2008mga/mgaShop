@@ -5,7 +5,13 @@ RUN apt-get update && \
     apt-get update
 RUN apt-get install -y zip unzip && \
     apt-get update
-RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client imagemagick php-dev libmagickwand-dev --no-install-recommends && \
+
+RUN apt-get update && apt-get install -y git libmagick++-dev --no-install-recommends && \
+    git clone https://github.com/mkoppanen/imagick.git && \
+    cd imagick && git checkout phpseven && phpize && ./configure && \
+    make && make install && \
+    cd ../ && rm -rf imagick
+RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client imagemagick libmagickwand-dev --no-install-recommends && \
     pecl install imagick mcrypt-1.0.1
 RUN docker-php-ext-install mysqli mbstring xml imagick gd mcrypt pdo_mysql
 
