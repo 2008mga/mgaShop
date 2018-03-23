@@ -6,14 +6,14 @@ RUN apt-get update && \
 RUN apt-get install -y zip unzip && \
     apt-get update
 
-RUN apt-get update && apt-get install -y git libmagick++-dev --no-install-recommends && \
-    git clone https://github.com/mkoppanen/imagick.git && \
-    cd imagick && git checkout phpseven && phpize && ./configure && \
-    make && make install && \
-    cd ../ && rm -rf imagick
+RUN apt-get install -y libmagickwand-dev --no-install-recommends && rm -rf /var/lib/apt/lists/*  && \
+    curl -L https://pecl.php.net/get/imagick-3.4.3.tgz >> /usr/src/php/ext/imagick.tgz && \
+    tar -xf /usr/src/php/ext/imagick.tgz -C /usr/src/php/ext/ && \
+    rm /usr/src/php/ext/imagick.tgz
+
 RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client imagemagick libmagickwand-dev --no-install-recommends && \
     pecl install imagick mcrypt-1.0.1
-RUN docker-php-ext-install mysqli mbstring xml imagick gd mcrypt pdo_mysql
+RUN docker-php-ext-install mysqli mbstring xml imagick-3.4.3 gd mcrypt pdo_mysql
 
 # install npm
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash && \
