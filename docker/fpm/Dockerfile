@@ -7,9 +7,10 @@ RUN apt-get install -y zip unzip && \
     apt-get update
 
 RUN apt-get install -y libmagickwand-dev --no-install-recommends && rm -rf /var/lib/apt/lists/*  && \
-    curl -L https://pecl.php.net/get/imagick-3.4.3.tgz >> /usr/src/php7/ext/imagick.tgz && \
-    tar -xf /usr/src/php7/ext/imagick.tgz -C /usr/src/php7/ext/ && \
-    rm /usr/src/php7/ext/imagick.tgz
+    curl -L https://pecl.php.net/get/imagick-3.4.3.tgz >> /home/imagick.tgz && \
+    mkdir /home/imagick && \
+    tar -xf /home/imagick.tgz -C /home/imagick && \
+    cd /home/imagick && make && make install
 
 RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client imagemagick libmagickwand-dev --no-install-recommends && \
     pecl install imagick mcrypt-1.0.1
