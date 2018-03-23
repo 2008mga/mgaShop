@@ -4,7 +4,7 @@ RUN apt-get update && \
     apt-get install -y wget apt-transport-https lsb-release ca-certificates libpng-dev libxml2-dev
 RUN apt-get install -y zip unzip
 
-RUN apt-get install -y libmcrypt-dev mysql-client libmagickwand-dev php7.0-devel --no-install-recommends && \
+RUN apt-get install -y libmcrypt-dev mysql-client libmagickwand-dev php7.2-devel --no-install-recommends && \
     pecl install imagick mcrypt-1.0.1
 RUN docker-php-ext-install mysqli mbstring xml gd mcrypt pdo_mysql
 
