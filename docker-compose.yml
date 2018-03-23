@@ -8,6 +8,7 @@ services:
       - ./docker/default.conf:/etc/nginx/conf.d/default.conf:rw
     links:
       - fpm
+      - node
   fpm:
     build: docker/fpm
     links:
@@ -31,6 +32,14 @@ services:
       - MYSQL_DATABASE=shop
       - MYSQL_USER=root
       - MYSQL_PASSWORD=secret
+  node:
+    build: ./docker/node
+    working_dir: /code
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/code:rw
+    command: bash -c "npm install && yarn run build-front"
 
 networks:
   default:
