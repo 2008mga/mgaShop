@@ -1,0 +1,41 @@
+$separator_lines_color: lighten(black, 80%);
+$separator_color: lighten(black, 60%);
+
+.paginate_separated {
+  position: relative;
+  text-align: center;
+
+  &::before,
+  &::after {
+    display: block;
+    content: '';
+    width: 50%;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    background-color: $separator_lines_color;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+
+  button,
+  span {
+    z-index: 9999;
+    position: relative;
+  }
+
+  span {
+    background-color: white;
+    display: inline-block;
+    position: relative;
+    padding: 0 10px;
+    color: $separator_color;
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "data": {
+    "types": [
+      {
+        
+        "name": {
+          "ru": "Программа",
+          "en": "Programme"
+        },
+        "key": "program"
+      },
+      {
+        "name": {
+          "ru": "Культурная программа",
+          "en": "Culture programme"
+        },
+        "key": "culture"
+      },
+      {
+        "name": {
+          "ru": "Спортивная программа",
+          "en": "Sport programme"
+        },
+        "key": "sport"
+      }
+    ],
+    "objects": [
+      {
+        "Place_ID": 1,
+        "Map_name": {
+          "ru": "Зал «Пушкин»",
+          "en": "Pushkin Hal",
+          "zh": "",
+          "ko": "",
+          "ja": "",
+          "vi": ""
+        },
+        "Types": {
+          "ids": [ 0, 2 ],
+          "data": {
+            "partner_id": 1,
+            "restaurant_id": 2
+          }
+        },
+        ...
+      }
+    ]
+  }
+}
