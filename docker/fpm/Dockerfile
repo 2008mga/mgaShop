@@ -1,7 +1,8 @@
 FROM php:7-fpm
 
 RUN apt-get update && \
-    apt-get install -y wget apt-transport-https lsb-release ca-certificates
+    apt-get install -y wget apt-transport-https lsb-release ca-certificates libxml2-dev && \
+    apt-get update
 
 RUN docker-php-ext-install mysqli && \
     docker-php-ext-install mbstring && \
