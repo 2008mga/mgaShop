@@ -6,7 +6,7 @@ RUN apt-get update && \
     echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list && \
     apt-get update
 
-RUN apt-get install -y php7.2-mysql php7.2-mbstring php-xml php7.2-gd zip unzip
+RUN apt-get install -y php7-mysql php7-mbstring php7-xml php7-gd zip unzip
 
 RUN apt-get update && apt-get install -y libmcrypt-dev \
     mysql-client libmagickwand-dev --no-install-recommends \
