@@ -6,7 +6,7 @@ RUN apt-get update && \
     echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
 RUN apt-get install -y zip unzip
 
-RUN apt-get install -y libmcrypt-dev mysql-client libmagickwand-dev --no-install-recommends && \
+RUN apt-get install -y autoconf libmcrypt-dev mysql-client libmagickwand-dev --no-install-recommends && \
     pecl install imagick
 RUN docker-php-ext-install mysqli xml gd mcrypt pdo_mysql
 
