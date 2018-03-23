@@ -6,7 +6,7 @@ RUN apt-get update && \
 RUN apt-get install -y zip unzip && \
     apt-get update
 RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client libmagickwand-dev --no-install-recommends && \
-    pecl install imagick
+    pecl install imagick && \
     pecl install mcrypt
 RUN docker-php-ext-install mysqli mbstring xml gd imagick mcrypt pdo_mysql
 
