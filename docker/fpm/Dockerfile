@@ -3,19 +3,12 @@ FROM php:7-fpm
 RUN apt-get update && \
     apt-get install -y wget apt-transport-https lsb-release ca-certificates libpng-dev libxml2-dev && \
     apt-get update
-
-RUN docker-php-ext-install mysqli && \
-    docker-php-ext-install mbstring && \
-    docker-php-ext-install xml && \
-    docker-php-ext-install gd
-
-RUN apt-get install -y zip unzip
-
-RUN apt-get update && apt-get install -y libmcrypt-dev \
-    mysql-client libmagickwand-dev --no-install-recommends \
-    && pecl install imagick \
-    && docker-php-ext-enable imagick \
-    && docker-php-ext-install mcrypt pdo_mysql
+RUN apt-get install -y zip unzip && \
+    apt-get update
+RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client libmagickwand-dev --no-install-recommends && \
+    pecl install imagick
+    pecl install mcrypt
+RUN docker-php-ext-install mysqli mbstring xml gd imagick mcrypt pdo_mysql
 
 # install npm
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash && \
