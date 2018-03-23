@@ -6,7 +6,7 @@ RUN apt-get update && \
 RUN apt-get install -y zip unzip && \
     apt-get update
 RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client imagemagick libmagickwand-dev --no-install-recommends && \
-    pecl install mcrypt-1.0.1
+    pecl install mcrypt
 RUN docker-php-ext-install mysqli mbstring xml gd mcrypt pdo_mysql
 
 # install npm
