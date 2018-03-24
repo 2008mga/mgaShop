@@ -39,7 +39,7 @@ services:
       - NODE_ENV=production
     volumes:
       - ./:/code:rw
-    command: bash -c "npm install --production && npm update && yarn run build-front"
+    command: bash -c "yarn && yarn run build-front"
 
 networks:
   default:
